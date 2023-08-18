@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+<div class="wrapper wrapper--thumbs">
+  <% for (const film of films){ %>
+  <a class="thumb" href="/film/<%=film.title%>">
+    <img class="thumb__img" src="<%=film.banner_src%>" alt="">
+    <span class="thumb__name thumb__name-<%=film.title%>"><%=film.title%></span>
+  </a>
+  <% } %>
+</div>
+<%- include('partials/footer') %>

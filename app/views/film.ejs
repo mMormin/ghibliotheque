@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+<div class="wrapper">
+  <img src="<%= film.image_src %>" alt="">
+  <h2> <%= film.title %></h2>
+  <p>Original Title : <%= film.original_title %></p>
+  <p class="director_name"><%= film.director %></p>
+  <p><%= film.release_date %></p>
+  <p><%= film.duration %></p>
+  <p><%= film.description %></p>
+</div>
+<%- include('partials/footer') %>
