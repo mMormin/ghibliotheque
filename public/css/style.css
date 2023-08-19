@@ -83,7 +83,7 @@ h1 {
   font-family: "Gibhli";
 }
 
-.home__title {
+.home__title, .search__label {
   color: white;
   font-size: 6rem;
   line-height: 6rem;
@@ -118,6 +118,7 @@ h1 {
   font-weight: 700;
   background-color: white;
   border: 2px solid white;
+  max-width: 250px;
 }
 
 .button:hover {
@@ -297,6 +298,23 @@ h1 {
 .film-ogtitle {
   letter-spacing: 2px;
 }
+
+
+
+.search__label {
+  margin-bottom: 2rem;
+}
+
+.search__input {
+  width: 60rem;
+  height: 50px;
+  font-size: 2rem;
+  padding: 1rem;
+  border: 0;
+}
+
+
+
 
 .index-404 {
   padding-top: 25vh;

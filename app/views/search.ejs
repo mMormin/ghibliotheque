@@ -1,0 +1,12 @@
+<%- include('partials/header') %>
+<body  class="bg-full">
+  <%- include('partials/navbar') %>
+  <main>
+    <div class="wrapper wrapper--center">
+      <form class="search__form wrapper" action="/search/result" method="get">
+        <label class="search__label" for="search">Vous cherchez un film ?</label>
+        <input type="search" id="search" class="search__input" name="title"/>
+        <button class="button">rechercher</button>
+      </form>
+    </div>
+    <%- include('partials/footer') %>
