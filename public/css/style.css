@@ -1,4 +1,6 @@
-/** reset **/
+/* ==========================================
+  0.0   |   RESET & FONTS-FACE
+============================================= */
 @import url("reset.css");
 
 @font-face {
@@ -33,7 +35,10 @@
   src: url("../fonts/Ghibli-Bold.ttf") format("woff");
 }
 
-/** GLOBAL **/
+
+/* ==========================================
+  1.0   |   GLOBAL STYLE
+============================================= */
 body {
   margin: 0;
   padding: 0;
@@ -46,6 +51,18 @@ body {
 .bg-full {
   background: url(../imgs/background.png) no-repeat center fixed;
   background-size: cover;
+}
+
+h1 {
+  font-family: "Gibhli";
+}
+
+.home__title, .search__label {
+  color: white;
+  font-size: 6rem;
+  line-height: 6rem;
+  font-family: "Ghibli";
+  letter-spacing: 2px;
 }
 
 .wrapper {
@@ -64,55 +81,17 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   backdrop-filter: blur(10px);
+}
+
+.bordered {
   border: 4px solid white;
-}
-
-.wrapper--thumbs {
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: inherit;
-  width: 90%;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-h1 {
-  font-family: "Gibhli";
-}
-
-.home__title, .search__label {
-  color: white;
-  font-size: 6rem;
-  line-height: 6rem;
-  font-family: "Ghibli";
-  letter-spacing: 2px;
-}
-
-.film__title {
-  color: rgb(39, 39, 39);
-  text-transform: uppercase;
-  letter-spacing: -2px;
-  font-weight: 700;
-  font-size: 6.5rem;
-  padding-bottom: 3rem !important;
-}
-
-.film__subtitle {
-  border-bottom: 2px solid black;
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  margin-top: 3rem;
-  letter-spacing: 2.5px;
 }
 
 .button {
   font-size: 1.4rem;
+  line-height: 1.6rem;
   padding: 15px 20px;
-  margin-top: 3rem;
+  display: block;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 700;
@@ -128,7 +107,21 @@ h1 {
   border-color: white;
 }
 
-/** HEADER **/
+.button__container {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-right {
+  justify-content: flex-end;
+}
+
+
+/* ==========================================
+  1.1   |   HEADER STYLE
+============================================= */
 .header {
   display: flex;
   justify-content: space-between;
@@ -181,30 +174,48 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   height: 100%;
   color: rgb(0, 0, 0);
   font-weight: 400;
+  position: relative;
 }
 
 .nav__link::before {
   content: "‹";
   font-size: 5rem;
-  margin-right: 1.4rem;
-  margin-top: -7px;
+  margin-right: 1.1rem;
+  margin-top: -4px;
 }
 
 .nav__link:hover {
-  background-color: var(--color-lightest);
-  color: var(--color-red);
+  color: #1C9DCF;
   font-weight: var(--font-bold);
 }
 
 .nav__link:hover::after {
-  content: "-";
+  content: "_";
   position: absolute;
-  top: 30px;
+  top: 22px;
+  left: 88px;
   font-size: 2rem;
-  color: var(--color-light);
+  color: #1C9DCF;
+}
+
+
+/* ==========================================
+  2.0   |   FILMS PAGE STYLE
+============================================= */
+.wrapper--thumbs {
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: inherit;
+  width: 90%;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .thumb {
@@ -216,8 +227,8 @@ h1 {
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: all ease 0.5s;
-  margin-bottom: 3rem;
+
+  margin-bottom: 2.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -226,6 +237,7 @@ h1 {
 .thumb:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: rgba(0, 0, 0, 0.247);
+  transition: all ease 0.5s;
 }
 
 .thumb:hover .thumb__img {
@@ -258,6 +270,10 @@ h1 {
   color: white;
 }
 
+
+/* ==========================================
+  3.0   |   FILM PAGE STYLE
+============================================= */
 .film__container {
   display: flex;
   width: 70%;
@@ -265,6 +281,35 @@ h1 {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   background-color: white;
+}
+
+.film__title {
+  color: rgb(39, 39, 39);
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  font-weight: 700;
+  font-size: 6.5rem;
+  padding-bottom: 3rem !important;
+}
+
+.film__subtitle {
+  border-bottom: 2px solid black;
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  letter-spacing: 2.5px;
+}
+
+.film__content > * {
+  padding-bottom: 2rem;
+}
+
+.film__content {
+  padding: 3rem 5rem;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 1.6rem;
 }
 
 .film-img {
@@ -279,17 +324,6 @@ h1 {
   border-right: 2px solid black;
 }
 
-.film__content {
-  padding: 3rem 5rem;
-  align-items: flex-start;
-  justify-content: center;
-  font-size: 1.6rem;
-}
-
-.film__content > * {
-  padding-bottom: 2rem;
-}
-
 .film__content span {
   color: black;
   font-weight: 700;
@@ -300,13 +334,15 @@ h1 {
 }
 
 
-
+/* ==========================================
+  4.0   |   SEARCH PAGE STYLE
+============================================= */
 .search__label {
   margin-bottom: 2rem;
 }
 
 .search__input {
-  width: 60rem;
+  width: 100%;
   height: 50px;
   font-size: 2rem;
   padding: 1rem;
@@ -314,60 +350,89 @@ h1 {
 }
 
 
-
-
-.index-404 {
-  padding-top: 25vh;
-}
-
-.index-404 .container {
-  width: 60%;
-  margin: 0 auto;
-  flex-direction: column;
-  box-shadow: rgb(36, 36, 223) 0px 0px 0px 5px inset,
-    rgba(255, 255, 255, 0) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px,
-    rgba(255, 255, 255, 0) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px,
-    rgba(255, 255, 255, 0) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px,
-    rgba(255, 255, 255, 0) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
-  padding: 4rem;
-  background-color: rgb(36, 36, 223);
+/* ==========================================
+  4.0   |   404 PAGE STYLE
+============================================= */
+.bg-full-var {
+  background-color: #1C9DCF;
+  font-family: "Ghibli";
   color: white;
-
-  position: relative;
-  animation: 2.5s ease-in-out infinite alternate slidein;
+  background-image: url(../imgs/totoro.png);
+  background-position: 3% 72%;
+  background-repeat: no-repeat;
 }
 
-@keyframes slidein {
-  to {
-    box-shadow: rgb(36, 36, 223) 0px 0px 0px 5px inset,
-      rgba(255, 255, 255, 0) 10px -10px 0px -3px, rgb(31, 193, 27) -10px -10px,
-      rgba(255, 255, 255, 0) 20px -20px 0px -3px, rgb(255, 217, 19) -20px -20px,
-      rgba(255, 255, 255, 0) 30px -30px 0px -3px, rgb(255, 156, 85) -30px -30px,
-      rgba(255, 255, 255, 0) 40px -40px 0px -3px, rgb(255, 85, 85) -40px -40px;
-    padding: 2.5%;
+.error__title {
+  text-transform: uppercase;
+  font-size: 10rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: left;
+}
+
+.error__content {
+  font-size: 2rem;
+  line-height: 2.8rem;
+  margin-top: 0rem;
+  text-align: right;
+  letter-spacing: 1px;
+  border-top: 2px solid white;
+  padding-top: 1rem;
+}
+
+/* === MEDIUM DEVICES === */
+@media screen and (max-width: 888px) {
+  .wrapper--thumbs {
+    position: relative;
+    top: inherit;
+    left: inherit;
+    margin: 2rem auto 0 auto;
+    transform: inherit;
   }
-}
 
-.cross {
-  position: absolute;
-  right: 14px;
-  top: 11px;
-  width: 22px;
-  height: 22px;
-}
+  .wrapper--center {
+    position: relative;
+    top: inherit;
+    left: inherit;
+    width: 60%;
+    margin: 25vh auto 0 auto;
+    transform: inherit;
+    padding: 4rem;
+  }
 
-.cross:before,
-.cross:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 22px;
-  width: 2px;
-  background-color: #ffffff;
-}
-.cross:before {
-  transform: rotate(45deg);
-}
-.cross:after {
-  transform: rotate(-45deg);
+  .home__title, .search__label {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  .button__container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    font-size: 1rem;
+    max-width: 140px;
+    align-items: center;
+    line-height: 1.5rem;
+    padding: 10px 10px;
+  }
+
+  .button:first-child {
+    margin-bottom: 2rem;
+  }
+
+  .film__container {
+    flex-direction: column;
+    margin-bottom: 5rem;
+  }
+  
+  .film-img {
+    width: 100%;
+  }
+
+  .film-description {
+    padding: 2rem 0 0 0 !important;
+    border-right: 0;
+  }
 }
