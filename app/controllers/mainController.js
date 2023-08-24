@@ -1,35 +1,35 @@
-const data = require("../data/films.json");
+const films = require("../data/films.json");
 
 const mainController = {
   /**
-   * showHomePage Function
+   * homePage Function
    * to display the home page
    */
-  showHomePage: (req, res) => {
-    res.status(200).render("index", { films: data });
+  homePage: (req, res) => {
+    res.status(200).render("index", { films });
   },
 
   /**
-   * showFilmsPage Function
+   * filmListPage Function
    * to display all the films
    */
-  showFilmsPage: (req, res) => {
-    res.status(200).render("films", { films: data });
+  filmListPage: (req, res) => {
+    res.status(200).render("films", { films });
   },
 
   /**
-   * showFilmPage Function
+   * filmPage Function
    * to display the required film
    */
-  showFilmPage: (req, res) => {
-    const filmQuery = req.params.title;
-    const thisFilm = data.find((film) => film.title === filmQuery);
+  filmPage: (req, res) => {
+    const { title: filmQuery } = req.params;
+    const film = data.findIndex((film) => film.title === filmQuery);
 
-    if (thisFilm) {
-      res.status(200).render("film", { film: thisFilm });
-    } else {
-      res.status(404).render("404", { films: data });
+    if (!film) {
+      res.status(404).render("404", { films });
     }
+    
+    res.status(200).render("film", { film });
   },
 
   /**
@@ -45,17 +45,23 @@ const mainController = {
    * to display the result page
    */
   resultPage: (req, res) => {
-    const searchQuery = req.query.title;
+    const { title: filmTitleQuery } = req.query;
     const filmsArray = JSON.parse(JSON.stringify(data));
     const matchArray = [];
 
     for (const film of filmsArray) {
-      if (film.title.toLowerCase().includes(searchQuery)) {
+      if (film.title.toLowerCase().includes(filmTitleQuery)) {
         matchArray.push(film);
       }
     }
 
-    res.status(200).render("result", { searchTxt: searchQuery, films: matchArray });
+    if (!matchArray.length) {
+      res.status(404).render("404", { films });
+    }
+
+    res
+      .status(200)
+      .render("result", { searchTxt: filmTitleQuery, films: matchArray });
   },
 };
 

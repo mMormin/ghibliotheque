@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const mainController = require("./controllers/mainController");
 
-router.get("/", mainController.showHomePage);
+router.get("/", mainController.homePage);
 
-router.get("/films", mainController.showFilmsPage);
+router.get("/films", mainController.filmListPage);
 
-router.get("/film/:title", mainController.showFilmPage);
+router.get("/films/:title", mainController.filmPage);
 
 router.get("/search", mainController.searchPage);
 
