@@ -5,7 +5,7 @@
     <%= searchTxt %>
     <div class="wrapper wrapper--thumbs">
       <% for (const film of films){ %>
-      <a class="thumb" href="/film/<%=film.title%>">
+      <a class="thumb" href="/films/<%=film.title%>">
         <img class="thumb__img" src="<%=film.banner_src%>" alt="">
         <span class="thumb__name thumb__name-<%=film.title%>"><%=film.title%></span>
       </a>
