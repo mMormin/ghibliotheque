@@ -21,15 +21,16 @@ const mainController = {
    * filmPage Function
    * to display the required film
    */
-  filmPage: (req, res) => {
+  filmPage: async (req, res) => {
     const { title: filmQuery } = req.params;
-    const film = data.findIndex((film) => film.title === filmQuery);
+    try {
+      const film = await data.findIndex((film) => film.title === filmQuery);
 
-    if (!film) {
+      res.status(200).render("film", { film });
+    } catch (error) {
+      console.log(error);
       res.status(404).render("404", { films });
     }
-    
-    res.status(200).render("film", { film });
   },
 
   /**
@@ -44,24 +45,33 @@ const mainController = {
    * resultPage Function
    * to display the result page
    */
-  resultPage: (req, res) => {
+  resultPage: async (req, res) => {
     const { title: filmTitleQuery } = req.query;
-    const filmsArray = JSON.parse(JSON.stringify(data));
-    const matchArray = [];
 
-    for (const film of filmsArray) {
-      if (film.title.toLowerCase().includes(filmTitleQuery)) {
-        matchArray.push(film);
+    try {
+      const filmsArray = await JSON.parse(JSON.stringify(data));
+
+      const matchArray = [];
+
+      for (const film of filmsArray) {
+        if (film.title.toLowerCase().includes(filmTitleQuery)) {
+          matchArray.push(film);
+        }
       }
-    }
 
-    if (!matchArray.length) {
+      if (!matchArray.length) {
+        res.status(404).render("404", { films });
+      }
+      
+      res
+        .status(200)
+        .render("result", { searchTxt: filmTitleQuery, films: matchArray });
+
+    } catch (error) {
+      console.log(error);
+
       res.status(404).render("404", { films });
     }
-
-    res
-      .status(200)
-      .render("result", { searchTxt: filmTitleQuery, films: matchArray });
   },
 };
 
